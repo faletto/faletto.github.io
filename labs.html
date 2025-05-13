@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Colin Faletto</title>
+    <title>Labs | Colin Faletto</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,10 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+       
 </head>
-
 <body>
-    <!-- NAVBAR -->
+     <!-- NAVBAR -->
     <nav>
         <div class="left">
             <a href="/">Colin Faletto</a>
@@ -31,33 +31,8 @@
                     class="fa-brands fa-linkedin"></i> <span>LinkedIn</span></a>
         </div>
     </nav>
-    <main>
-        <!-- SECTION 1 : Hero -->
-        <section id="hero" class="hero">
-            <div class="text">
-                <h2>Hi, I'm Colin.</h2>
-                <p>I'm an incoming freshman at the University of Washington and aspiring engineer with an interest in Electrical/Computer/Network engineering. 
-                This website mainly serves as an aggregate page for all of my Cisco labs.</p>
-                <div class="links">
-                    <a href="/labs.html">
-                        <i class="fa-solid fa-list"></i>
-                        <span>Cisco Labs</span>
-                    </a>
-                    <a href="https://github.com/faletto?tab=repositories" target="_blank" rel="noopener no-referrer">
-                        <i class="fa-solid fa-flask"></i>
-                        <span>Repositories</span>
-                    </a>
-                </div>
-            </div>
-            <div class="headshot fancy-border">
-                <img src="images/FALETTO-1009.jpg" alt="">
-            </div>
-        </section>
-        <!-- SECTION 3 : Repositories -->
-        <section id="repositories"></section>
-        <!-- SECTION 4 : Contact -->
-        <section id="contact"></section>
-    </main>
+    <div id="loading-message"></div>
+    <div id="pdf-list" class="pdf-grid"></div>
+     <script src="pdf.js"></script>
 </body>
-
 </html>

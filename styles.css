@@ -1,0 +1,210 @@
+:root {
+ --text-color: #efefef;
+ --link-color: #e3df0e;
+ --background-color: #232323;
+ --yellow: #e3df0e;
+ 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--text-color);
+    font-family: "Comic Relief", sans-serif;
+    background-color: var(--background-color);
+    background-image: url("images/circles.png");
+    background-repeat: repeat;
+    background-position: top left;
+    background-attachment: fixed;
+    animation: scrollBackground 10s linear infinite
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+    height: 80px;
+    align-items: center;
+}
+nav .left a {
+    color: var(--yellow);
+    font-size: 22px;
+    font-weight: 600px;
+}
+nav .right a {
+    color: var(--text-color);
+    margin: 0 10px;
+}
+
+/* Hero */
+.hero {
+   display: flex;
+   justify-content: space-between;
+   padding: 0 50px; 
+   margin: 50px 0;
+   align-items: center;
+   gap: 40px;
+   margin-bottom: 100px;
+}
+
+.hero .text{
+    flex: 5;
+}
+.hero .text h2 {
+    font-size: 85px;
+    background: linear-gradient(to right, red, orange, yellow, green, blue, purple);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero .text .links {
+    margin-top: 25px;
+    font-size: 30px
+}
+
+.hero .text .links a {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: .1s;
+}
+
+.hero .text .links a:hover {
+    color: var(--text-color);
+}
+.hero .headshot {
+    flex: 2;
+    display: flex;
+    justify-content: right;
+}
+.hero .headshot img {
+ 
+
+	--angle: 0deg;
+	width: 40vmin;
+	height: 40vmin;
+	border: 1vmin solid;
+	border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
+	
+	animation: 3s rotate linear infinite;
+}
+
+.pdf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.pdf-card {
+
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+
+	border: 1vmin solid;
+	border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
+	
+}
+
+.pdf-card:hover {
+    transform: translateY(-4px);
+    animation: 3s rotate linear infinite
+}
+
+.pdf-card h2 {
+    margin-top: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pdf-card img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+.loading-message {
+    justify-content: center;
+    top: -1.5rem;
+    left: 0;
+    font-size: 40px;
+}
+
+@keyframes rotate {
+	to {
+		--angle: 360deg;
+	}
+}
+
+@keyframes scrollBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1024px 1024px; /* change these to control speed/direction */
+  }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+
+
+@media(max-width: 600px) {
+    /* NAVBAR */
+    nav {
+        padding: 0 20px;
+    }
+    nav .right a span {
+        display: none;
+    }
+    nav .right a {
+        font-size: 22px;
+    }
+
+    .hero {
+        padding: 0 20px;
+    }
+
+    .hero .text h2 {
+        font-size: 30px;
+    }
+}
+
+@media(max-width: 850px) {
+.hero .text h2 {
+    font-size: 35px
+}
+}
+
+@media(max-width: 740px) {
+.hero {
+    flex-direction: column-reverse;
+}
+.hero .headshot img {
+    width: 300px;
+}
+}
