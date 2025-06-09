@@ -1,12 +1,8 @@
 :root {
  --text-color: #efefef;
- --link-color: #efefef;
+ --link-color: #e3df0e;
  --background-color: #232323;
  --yellow: #e3df0e;
- --gray-1: #363636;
- --gray-2: #404040;
- --gray-3: #575757;
- --gray-4: #898989;
  
 }
 
@@ -22,14 +18,14 @@ html {
 
 body {
     color: var(--text-color);
-    font-family: "Lexend", sans-serif;
+    font-family: "Comic Relief", sans-serif;
     background-color: var(--background-color);
-    background-image: url("images/circles-black.png");
+    background-image: url("images/circles.png");
     background-repeat: repeat;
     background-position: top left;
     background-attachment: fixed;
     animation: scrollBackground 10s linear infinite;
-    user-select: none;
+        user-select: none;
 }
 
 a {
@@ -45,7 +41,7 @@ nav {
     align-items: center;
 }
 nav .left a {
-    color: var(--text-color);
+    color: var(--yellow);
     font-size: 22px;
     font-weight: 600px;
 }
@@ -70,7 +66,7 @@ nav .right a {
 }
 .hero .text h2 {
     font-size: 85px;
-    background: var(--text-color);
+    background: linear-gradient(to right, red, orange, yellow, green, blue, purple);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -104,8 +100,8 @@ nav .right a {
 	width: 40vmin;
 	height: 40vmin;
 	border: 1vmin solid;
-	/* border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1; */
-	border-image: conic-gradient(from var(--angle), var(--gray-1),var(--gray-2),var(--gray-3),var(--gray-4),var(--gray-3),var(--gray-2),var(--gray-1)) 1;
+	border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
+	
 	animation: 3s rotate linear infinite;
 }
 
@@ -124,7 +120,7 @@ nav .right a {
     transition: transform 0.2s ease;
 
 	border: 1vmin solid;
-	border-image: conic-gradient(from var(--angle), var(--gray-1),var(--gray-2),var(--gray-3),var(--gray-4),var(--gray-3),var(--gray-2),var(--gray-1)) 1;
+	border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
 	
 }
 

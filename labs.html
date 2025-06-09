@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Labs | Colin Faletto</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" id="themeStylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
@@ -29,9 +29,11 @@
 
             <a href="https://www.linkedin.com/in/colin-faletto-44610a16b/" target="_blank" rel="noopener no-referrer"><i
                     class="fa-brands fa-linkedin"></i> <span>LinkedIn</span></a>
+                    <label><input type="checkbox" id="themeToggle">Fun Mode</label>
         </div>
     </nav>
     <div><p id="loading-message">Loading PDFs... (make sure javascript is enabled)</p></div>
+    <script src="user-theme.js"></script>   
     <div id="pdf-list" class="pdf-grid"></div>
      <script src="read-pdfs.js"></script>
 </body>
