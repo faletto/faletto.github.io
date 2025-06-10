@@ -3,6 +3,7 @@
  --link-color: #efefef;
  --background-color: #232323;
  --yellow: #e3df0e;
+ --blue: #4457fc;
  --gray-1: #363636;
  --gray-2: #404040;
  --gray-3: #575757;
@@ -107,6 +108,14 @@ nav .right a {
 	/* border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1; */
 	border-image: conic-gradient(from var(--angle), var(--gray-1),var(--gray-2),var(--gray-3),var(--gray-4),var(--gray-3),var(--gray-2),var(--gray-1)) 1;
 	animation: 3s rotate linear infinite;
+}
+
+.portfolio-link {
+    text-align: center;
+    font-size: 150%;
+}
+.portfolio-link a {
+    color: var(--blue);
 }
 
 .pdf-grid {

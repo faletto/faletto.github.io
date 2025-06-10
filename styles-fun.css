@@ -104,6 +104,13 @@ nav .right a {
 	
 	animation: 3s rotate linear infinite;
 }
+.portfolio-link {
+    text-align: center;
+    font-size: 150%;
+}
+.portfolio-link a {
+    color: var(--yellow);
+}
 
 .pdf-grid {
     display: grid;

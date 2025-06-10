@@ -13,6 +13,7 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
        
 </head>
 <body>
@@ -32,6 +33,8 @@
                     <label><input type="checkbox" id="themeToggle">Fun Mode</label>
         </div>
     </nav>
+    <script src="merge_pdfs.js"></script>
+    <div class="portfolio-link"><p id="portfolio-link">Click <a href="#" onclick='mergePDFs(); return false;'>here</a> to see my full portfolio!</p></div>
     <div><p id="loading-message">Loading PDFs... (make sure javascript is enabled)</p></div>
     <script src="user-theme.js"></script>   
     <div id="pdf-list" class="pdf-grid"></div>
