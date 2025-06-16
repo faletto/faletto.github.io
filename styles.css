@@ -29,7 +29,7 @@ body {
     background-repeat: repeat;
     background-position: top left;
     background-attachment: fixed;
-    animation: scrollBackground 10s linear infinite;
+    animation: scrollBackground 60s linear infinite;
     user-select: none;
 }
 
@@ -53,6 +53,36 @@ nav .left a {
 nav .right a {
     color: var(--text-color);
     margin: 0 10px;
+}
+nav .right label {
+    color: var(--text-color);
+    margin: 0 10px;
+}
+
+.labelThemeToggle {
+    position: relative;
+    cursor: pointer;
+}
+.labelThemeToggle input {
+    /* Hides the checkbox */
+    display: none;
+}
+
+.labelThemeToggle .themeIcon {
+    font-size: 1.2em;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.labelThemeToggle .fa-face-laugh-beam {
+    opacity: 0;
+}
+.labelThemeToggle input:checked ~ .fa-face-smile {
+    opacity: 0;
+}
+.labelThemeToggle input:checked ~ .fa-face-laugh-beam {
+    opacity: 1;
 }
 
 /* Hero */
@@ -218,7 +248,11 @@ nav .right a {
 .hero {
     flex-direction: column-reverse;
 }
+.hero .headshot {
+    justify-content: center;
+}
 .hero .headshot img {
-    width: 300px;
+    width: 60%;
+    height: auto;
 }
 }
