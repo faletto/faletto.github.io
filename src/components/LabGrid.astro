@@ -1,0 +1,93 @@
+---
+import "../styles/colors.css";
+import "../styles/global.css";
+---
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<script is:inline src="/merge_pdfs.js"></script>
+
+<div class="fancy-button">
+    <a id="portfolio-link" href="#" onclick="mergePDFs()">Full Portfolio (PDF) <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+</div>
+<div>
+    <p id="loading-message">
+        Loading PDFs... (make sure javascript is enabled)
+    </p>
+</div>
+
+<div id="pdf-list" class="pdf-grid"></div>
+<script is:inline src="/read-pdfs.js"></script>
+
+<!-- This is a stupid way to do this but idc -->
+<style>
+    .fancy-button {
+        display:flex;
+        justify-content: center;
+    }
+    .fancy-button a {
+        font-size: 80%;
+    }
+</style>
+
+<style is:global>
+.portfolio-link {
+    text-align: center;
+    font-size: 150%;
+}
+.portfolio-link a {
+    text-decoration: none;
+    color: var(--blue);
+}
+
+.pdf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.pdf-card {
+
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+
+	border: 1vmin solid;
+	border-image: conic-gradient(from var(--angle), var(--gray-1),var(--gray-2),var(--gray-3),var(--gray-4),var(--gray-3),var(--gray-2),var(--gray-1)) 1;
+	
+}
+
+.pdf-card:hover {
+    transform: translateY(-4px);
+    animation: 3s rotate linear infinite
+}
+
+.pdf-card h2 {
+    margin-top: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.pdf-card img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+.loading-message {
+    justify-content: center;
+    top: -1.5rem;
+    left: 0;
+    font-size: 40px;
+}
+
+html.fun-theme .pdf-card {
+    border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
+}
+
+</style>

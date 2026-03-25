@@ -1,0 +1,226 @@
+---
+import "../styles/colors.css";
+const { title } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+    	<link rel="preconnect" href="https://fonts.googleapis.com">
+    	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    	<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<meta name="generator" content={Astro.generator} />
+       
+		<title>{title} | Colin Faletto</title>
+	</head>
+	<body>
+        
+		<nav>
+        <div class="left">
+            <a href="/">Colin Faletto</a>
+        </div>
+        <div class="right">
+            <a id="Portfolio" href="/"><i class="fa-solid fa-house"></i> Home</a>
+            <a id="Labs" href="/labs"><i
+                    class="fa-solid fa-list"></i> <span>Labs</span></a>
+            <a href="https://github.com/faletto" target="_blank" rel="noopener no-referrer"><i
+                    class="fa-brands fa-github"></i> <span>GitHub</span><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+
+            <a href="https://www.linkedin.com/in/colin-faletto-44610a16b/" target="_blank" rel="noopener no-referrer"><i
+                    class="fa-brands fa-linkedin"></i> <span>LinkedIn</span><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <label class="labelThemeToggle"><input type="checkbox" class="themeToggle" id="themeToggle">
+                <i class="fa-solid fa-face-smile themeIcon"></i>
+                <i class="fa-solid fa-face-laugh-beam themeIcon"></i>
+            </label>
+        </div>
+    	</nav>
+		<main style="flex: 1;">
+			<slot />
+		</main>
+		<footer>
+			<p>&copy; {new Date().getFullYear()} Colin Faletto. Built in <a href="https://astro.build/">Astro</a> (<a href="https://github.com/faletto/faletto.github.io">source code</a>).</p>
+		</footer>
+        <script is:inline src="/user-theme.js"></script>
+	</body>
+</html>
+
+<style set:html={`#${title} { color: var(--gray-4); } html.fun-theme #${title} {color: var(--yellow)}`}></style>
+
+<style>
+	html {
+		height: 100%;
+	}
+
+	body {
+		margin: 0;
+		width: 100%;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--text-color);
+    font-family: "Lexend", sans-serif;
+    background-color: var(--background-color);
+    background-image: url("/circles-black.png");
+    background-repeat: repeat;
+    background-position: top left;
+    background-attachment: fixed;
+    animation: scrollBackground 60s linear infinite;
+    user-select: none;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+    height: 80px;
+    align-items: center;
+}
+nav .left a {
+    color: var(--text-color);
+    font-size: 22px;
+    font-weight: 600px;
+}
+nav .right a {
+    color: var(--text-color);
+    margin: 0 10px;
+}
+nav .right a:hover {
+	color: var(--gray-4)
+}
+nav .right label {
+    color: var(--text-color);
+    margin: 0 10px;
+}
+nav .fa-arrow-up-right-from-square {
+	margin: 0 5px;
+	font-size: 0.9rem;
+	
+}
+
+.labelThemeToggle {
+    position: relative;
+    cursor: pointer;
+}
+.labelThemeToggle input {
+    /* Hides the checkbox */
+    display: none;
+}
+
+.labelThemeToggle .themeIcon {
+    font-size: 1.2em;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.labelThemeToggle .fa-face-laugh-beam {
+    opacity: 0;
+}
+.labelThemeToggle input:checked ~ .fa-face-smile {
+    opacity: 0;
+}
+.labelThemeToggle input:checked ~ .fa-face-laugh-beam {
+    opacity: 1;
+}
+
+
+
+
+
+
+@keyframes rotate {
+	to {
+		--angle: 360deg;
+	}
+}
+
+@keyframes scrollBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1024px 1024px; /* change these to control speed/direction */
+  }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* FOOTER */
+footer {
+	text-align: center;
+	padding: 2rem 1rem;
+	margin-top: 4rem;
+	color: var(--gray-4);
+	font-size: 0.9rem;
+}
+
+footer p {
+	margin: 0;
+}
+footer a {
+	color: var(--gray-6)
+}
+footer a:hover{
+	color: var(--grey-4)
+}
+
+
+
+@media(max-width: 600px) {
+    /* NAVBAR */
+    nav {
+        padding: 0 20px;
+    }
+    nav .right a span {
+        display: none;
+    }
+    nav .right a {
+        font-size: 22px;
+    }
+
+}
+
+
+
+html.fun-theme body {
+   font-family: "Comic Relief", sans-serif;
+   background-image: url("/circles.png");
+}
+
+html.fun-theme nav .right a:hover {
+    color: var(--yellow)
+}
+
+
+</style>
+

@@ -3,7 +3,7 @@ async function mergePDFs() {
     portfolio_text.textContent = "Please wait..."
 
     const {PDFDocument} = PDFLib;
-    const urls = ["portfolio-stuff/portfolio_pt1.pdf","portfolio-stuff/portfolio_pt2.pdf"];
+    const urls = ["/portfolio_pt1.pdf","/portfolio_pt2.pdf"];
     const mergedPDF = await PDFDocument.create();
 
     for (const url of urls) {
@@ -22,5 +22,9 @@ async function mergePDFs() {
     link.download = "portfolio-faletto.pdf";
     link.target = "_blank";
     link.rel = "noopener no-referrer";
+    
+    portfolio_text.innerHTML=`Full Portfolio (PDF) <i class="fa-solid fa-arrow-up-right-from-square"></i>`
+
     link.click();
+
 }

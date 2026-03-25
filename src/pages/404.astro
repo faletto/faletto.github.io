@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+---
+
+<Layout title="404">
+<div id="center">
+<h1>404 :(</h1>
+<h2>The requested resource was not found on the server.</h2>
+<h2>Anyways, here's Run 3:</h2>
+<iframe id="run3" src="https://en.gameslol.net/data/run-3/index.html" width="800" height="600"></iframe>
+<p id="toosmall">screen is too small :(</p>
+</div>
+
+</Layout>
+
+<style>
+    #center {
+       display:flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+
+    }
+    #center h1 {
+        font-size:600%;
+    }
+    #center h1, h2 {
+        margin: 0;
+        text-align: center;
+    }
+    #toosmall {
+        display:none;
+    }
+    @media (max-width: 800px) {
+        #run3 {
+            display: none;
+        }
+        #toosmall{
+            display:unset
+        }
+    }
+</style>

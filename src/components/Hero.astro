@@ -1,0 +1,139 @@
+---
+import "../styles/colors.css";
+import "../styles/global.css";
+---
+
+<section id="hero" class="hero">
+    <div class="text">
+        <h2>Hi, I'm Colin.</h2>
+        <p>
+            I'm a student at the University of Washington and
+            aspiring engineer with an interest in Electrical/Computer/Network
+            engineering.
+        </p>
+        <div class="fancy-button">
+            <a href="/labs.html">
+                <i class="fa-solid fa-list"></i>
+                <span>Cisco Labs</span>
+            </a>
+            
+            <a
+            href="https://github.com/faletto?tab=repositories"
+            target="_blank"
+            rel="noopener no-referrer"
+            >
+            <i class="fa-solid fa-flask"></i>
+            <span>Repositories</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+    </div>
+    </div>
+    <div class="headshot fancy-border">
+        <img src="/FALETTO-1009.jpg" alt="" />
+    </div>
+</section>
+
+<style>
+    p {
+        margin-top: 0;
+        font-size: 1.5rem;
+    }
+
+    /* Hero */
+    .hero {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 50px;
+        margin: 50px 0;
+        align-items: center;
+        gap: 40px;
+        margin-bottom: 100px;
+    }
+
+    .hero .text {
+        flex: 5;
+    }
+    .hero .text h2 {
+        font-size: 85px;
+        background: var(--text-color);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0;
+    }
+    
+    .hero .headshot {
+        flex: 2;
+        display: flex;
+        justify-content: right;
+    }
+    .hero .headshot img {
+        --angle: 0deg;
+        width: 40vmin;
+        height: 40vmin;
+        border: 1vmin solid;
+        border-image: conic-gradient(
+                from var(--angle),
+                var(--gray-1),
+                var(--gray-2),
+                var(--gray-3),
+                var(--gray-4),
+                var(--gray-3),
+                var(--gray-2),
+                var(--gray-1)
+            )
+            1;
+        animation: 3s rotate linear infinite;
+    }
+
+    .portfolio-link {
+        text-align: center;
+        font-size: 150%;
+    }
+    .portfolio-link a {
+        color: var(--blue);
+    }
+
+    @media (max-width: 600px) {
+        .hero {
+            padding: 0 20px;
+        }
+
+        .hero .text h2 {
+            font-size: 30px;
+        }
+    }
+
+    @media (max-width: 850px) {
+        .hero .text h2 {
+            font-size: 35px;
+        }
+    }
+
+    @media (max-width: 740px) {
+        .hero {
+            flex-direction: column-reverse;
+        }
+        .hero .headshot {
+            justify-content: center;
+        }
+        .hero .headshot img {
+            width: 60%;
+            height: auto;
+        }
+    }
+    html.fun-theme .hero .headshot img {
+        border-image: conic-gradient(
+                from var(--angle),
+                red,
+                orange,
+                yellow,
+                green,
+                blue,
+                purple,
+                red
+            )
+            1;
+    }
+
+</style>

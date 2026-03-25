@@ -1,17 +1,17 @@
 const toggle = document.getElementById("themeToggle");
-const stylesheet = document.getElementById("themeStylesheet");
+
 
 if (localStorage.getItem("user-theme") === "fun") {
+    document.documentElement.classList.add("fun-theme");
     toggle.checked = true;
-    stylesheet.href = "styles-fun.css";
 }
 
 toggle.addEventListener("change", () => {
     if (toggle.checked) {
-        stylesheet.href = "styles-fun.css";
+        document.documentElement.classList.add("fun-theme");
         localStorage.setItem("user-theme","fun")
     } else {
-        stylesheet.href = "styles.css";
+        document.documentElement.classList.remove("fun-theme");
         localStorage.setItem("user-theme", "normal")
     }
 })

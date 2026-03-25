@@ -1,0 +1,66 @@
+---
+import Hero from "../components/Hero.astro";
+import Layout from '../layouts/Layout.astro';
+import Timeline from "../components/Timeline.astro";
+
+const items = [	
+	{
+		title: "Member, UW Autonomous Flight Team",
+		date: "October 2025-",
+		description: "Developed software for a fixed-wing autonomous aircraft with real-time state estimation/correction and both manual/autonomous flight capability.",
+		image: "/uw_logo.png",
+		tags: ["Embedded Systems", "RTOS", "C++"]
+	},
+    {
+		title: 'Student, University of Washington',
+        date: "September 2025-",
+        description: 'Began taking classes with an intent on majoring in ECE or Computer Engineering.',
+		tagTitle: "Relevant Coursework:",
+        tags: ["PHYS 121-123 - Mechanics, Electromagnetism, Waves", "CSE 121-123 - Intro to Computer Programming",
+			"MATH 207 - Differential Equations", "MATH 208 - Linear Algebra", "MATH 124-126 - Calculus with Analytic Geometry"
+		],
+		image: "/uw_logo.png"
+    },
+	{
+		title: "Summer Technical Support, Bellevue School District",
+		date: "July-August 2025, July-August 2024",
+		description: "Assisted in imaging over 20,000 district-issued devices. Completed various technical work to keep the district's tech department running smoothly.",
+		tags: ["Electronic Repair/Maintenance", "Software Deployment", "Device Lifecycle Management"],
+		image: "/bsd.png"
+	},
+	{
+		title: "Network Implementation Project Manager, Rotary Club of Antigua",
+		date: "February 2025, February 2024",
+		description: "Led a team of students to install and update networks for schools and NGOs. Learned how to design and plan networks and make efficient use of available resources. Learned how to strategically delegate tasks to students based on their individual strengths.",
+		tags: ["Cabling", "Project Management", "Network Installation"],
+		image: "/rotary.png"
+	},
+	{
+		title: "Student, Cisco Networking Academy",
+		date: "September 2023-June 2025",
+		description: "Obtained professional-level certifications while learning how to implement a variety of networking protocols.",
+		link: "/labs",
+		image: "/cisco.png",
+		tags: ["IT", "Cybersecurity", "Documentation"]
+	},
+	{
+		title: "IT Captain, Newport Robotics Group",
+		date: "May 2023-June 2025",
+		description: "Led a small team to develop a strategy system for use at robotics competitions. The system consisted of a cross-platform scouting application written in Flutter and a server application written in Java, and allowed data to be instantly transferred between scouters, strategy team, and drive team.",
+		link: "https://github.com/NRG948/LightHouse",
+		tags: ["Flutter", "Dart", "Java","Spring Boot"],
+		image: "/nrg.png"
+	},
+	{
+		title: "Student, Newport High School",
+		date: "September 2021-June 2025",
+		description: "GPA: 4.00, Awards: Varsity Letter (x2, Robotics), Knight Valor (Community Service), Senior Award (Cisco)",
+		image: "/newport.png"
+	}
+]
+---
+
+<Layout title="Portfolio">
+	<Hero></Hero>
+	<Timeline items={items} title="Experience:"></Timeline>
+</Layout>

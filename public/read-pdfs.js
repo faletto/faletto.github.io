@@ -1,7 +1,7 @@
 const list = document.getElementById("pdf-list");
 const loadingMessage = document.getElementById("loading-message");
 loadingMessage.textContent = "Loading PDFs...";
-fetch("pdf_index.json").then(response => {
+fetch("/pdf_index.json").then(response => {
     if (!response.ok) { loadingMessage.textContent = "Error retrieving PDF index"; throw new Error("Error retrieving PDF index"); }
     return response.json();
 }).then(
