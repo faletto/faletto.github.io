@@ -37,6 +37,8 @@ jobs:
         run: pip install PyMuPDF
       - name: Generate PDFs
         run: python generate_pdfs.py
+      - name: Install Dependencies
+        run: npm i
       - name: Build Site
         run: npm run build
       - name: Setup Pages
