@@ -37,10 +37,8 @@ jobs:
         run: pip install PyMuPDF
       - name: Generate PDFs
         run: python generate_pdfs.py
-      - name: Install Dependencies
-        run: npm i
-      - name: Build Site
-        run: npm run build
+      - name: Install and Build Astro
+        uses: withastro/action@v5
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
