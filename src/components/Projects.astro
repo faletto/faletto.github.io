@@ -1,0 +1,200 @@
+---
+import "../styles/colors.css";
+
+interface ProjectItem {
+	title: string;
+	description: string;
+	link: string;
+    photo?: string;
+}
+
+const projects: ProjectItem[] = [
+    {
+        title: "LightHouse",
+        description:
+            "Cross-platform scouting and strategy system for use at robotics competitions, with live data syncing between field scouts and drive team.",
+        link: "https://github.com/NRG948/LightHouse",
+        photo: "/lighthouse.png"
+    },
+    {
+        title: "DubGuessr [WIP]",
+        description: "Guessing game for interior locations across the University of Washington Campus.",
+        link: "",
+        photo: "/dubguessr.png"
+
+    },
+    {
+		title: "12xGraph",
+		description:
+			"Web app for generating graphs for labs in the UW PHYS 12X series.",
+		link: "/12xgraph",
+        photo: "/12xgraph.svg"
+	},
+    
+    
+];
+---
+
+<section class="projects-section" id="projects">
+	<div class="projects-header">
+		<h2>Projects:</h2>
+	</div>
+	<div class="projects-carousel" role="list">
+		{projects.map((project) => (
+			<a
+				href={project.link}
+				class="project-card"
+				role="listitem"
+			><div>
+                
+                    <div class="project-top-row">
+                    <h3>{project.title}</h3>
+                    </div>
+                    <p>{project.description}</p>
+            </div>
+				<div class="project-media">
+                {project.photo && <img class="project-photo" src={project.photo} />}
+            </div>
+			</a>
+		))}
+	</div>
+</section>
+
+<style>
+	.projects-section {
+		margin: 0px 0;
+		padding: 0 50px;
+	}
+
+	.projects-header {
+		display: flex;
+        justify-content: center;
+		gap: 6px;
+		margin-bottom: 24px;
+	}
+
+	.projects-header h2 {
+		margin: 0;
+		color: var(--text-color);
+		font-size: 2.5rem;
+	}
+
+
+	.projects-carousel {
+		display: flex;
+		gap: 18px;
+		overflow-x: auto;
+		padding-top: 8px;
+		padding-bottom: 12px;
+		justify-content: flex-start;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: thin;
+		scrollbar-color: var(--gray-4) transparent;
+	}
+
+	.projects-carousel::-webkit-scrollbar {
+		height: 10px;
+	}
+
+	.projects-carousel::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.projects-carousel::-webkit-scrollbar-thumb {
+		background: var(--gray-3);
+		border-radius: 999px;
+	}
+
+	.project-card {
+		display: flex;
+		flex-direction: row;
+        justify-content: space-between;
+		min-height: 150px;
+		flex: 0 0 400px;
+		border-radius: 14px;
+		padding: 20px;
+		text-decoration: none;
+		color: var(--text-color);
+		background: linear-gradient(
+			180deg,
+			color-mix(in srgb, var(--gray-2) 88%, black),
+			var(--gray-1)
+		);
+		border: 1px solid var(--gray-3);
+		scroll-snap-align: start;
+		transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+	}
+
+	.project-card:hover {
+		transform: translateY(-2px);
+		border-color: var(--blue);
+		box-shadow: 0 10px 24px var(--blue-shadow);
+	}
+
+	.project-top-row {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.project-card h3 {
+		margin: 14px 0 10px;
+		font-size: 1.25rem;
+		line-height: 1.3;
+	}
+
+	.project-card p {
+		margin: 0;
+		color: var(--gray-5);
+		font-size: 0.95rem;
+		line-height: 1.55;
+	}
+
+	.project-media {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 110px;
+	}
+
+	.project-photo {
+		display: block;
+		max-width: 100%;
+		max-height: 100px;
+		object-fit: contain;
+        border-radius: 10px;
+	}
+
+	@media (max-width: 768px) {
+		.projects-section {
+			padding: 0 20px;
+		}
+
+		.projects-header h2 {
+			font-size: 2rem;
+		}
+
+        .project-card {
+            flex-basis: min(500px, calc(100vw - 40px));
+        }
+	}
+
+	html.fun-theme .project-card {
+		border-image: conic-gradient(
+			from var(--angle),
+			red,
+			orange,
+			yellow,
+			green,
+			blue,
+			purple,
+			red
+		) 1;
+		border-width: 2px;
+		border-style: solid;
+	}
+
+	html.fun-theme .project-icon {
+		color: #ffcd00;
+	}
+</style>
