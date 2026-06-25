@@ -20,25 +20,16 @@ const { title } = Astro.props;
 		<title>{title} | Colin Faletto</title>
 	</head>
 	<body>
-        
 		<nav>
-        <div class="left">
-            <a href="/">Colin Faletto</a>
+        <div class="nav-links" aria-label="Primary navigation">
+            <a id="Portfolio" href="/">home</a>
+            <a id="Labs" href="/labs">labs</a>
+            <a href="https://github.com/faletto" target="_blank" rel="noopener no-referrer">github</a>
+            <a href="https://www.linkedin.com/in/colin-faletto-44610a16b/" target="_blank" rel="noopener no-referrer">linkedin</a>
+            <a href="mailto:faletto@uw.edu">email</a>
         </div>
-        <div class="right">
-            <a id="Portfolio" href="/"><i class="fa-solid fa-house"></i> Home</a>
-            <a id="Labs" href="/labs"><i
-                    class="fa-solid fa-list"></i> <span>Labs</span></a>
-            <a href="https://github.com/faletto" target="_blank" rel="noopener no-referrer"><i
-                    class="fa-brands fa-github"></i> <span>GitHub</span><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
 
-            <a href="https://www.linkedin.com/in/colin-faletto-44610a16b/" target="_blank" rel="noopener no-referrer"><i
-                    class="fa-brands fa-linkedin"></i> <span>LinkedIn</span><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            <label class="labelThemeToggle"><input type="checkbox" class="themeToggle" id="themeToggle">
-                <i class="fa-solid fa-face-smile themeIcon"></i>
-                <i class="fa-solid fa-face-laugh-beam themeIcon"></i>
-            </label>
-        </div>
+       
     	</nav>
 		<main style="flex: 1;">
 			<slot />
@@ -46,11 +37,12 @@ const { title } = Astro.props;
 		<footer>
 			<p>&copy; {new Date().getFullYear()} Colin Faletto. Built in <a href="https://astro.build/">Astro</a> (<a href="https://github.com/faletto/faletto.github.io">source code</a>).</p>
 		</footer>
+        <script is:inline src="/ascii-particles.js"></script>
         <script is:inline src="/user-theme.js"></script>
 	</body>
 </html>
 
-<style set:html={`#${title} { color: var(--gray-4); } html.fun-theme #${title} {color: var(--yellow)}`}></style>
+<style set:html={`#${title} { color: #fff; } html.fun-theme #${title} {color: var(--yellow)}`}></style>
 
 <style>
 	html {
@@ -79,13 +71,37 @@ html {
 body {
     color: var(--text-color);
     font-family: "Lexend", sans-serif;
-    background-color: var(--background-color);
-    background-image: url("/circles-black.png");
-    background-repeat: repeat;
-    background-position: top left;
-    background-attachment: fixed;
-    animation: scrollBackground 60s linear infinite;
+    background: #000;
     user-select: none;
+    position: relative;
+    overflow-x: hidden;
+}
+
+:global(.ascii-particles) {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    contain: layout paint style;
+}
+
+:global(.ascii-particles span) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgba(239, 239, 239, 0.9);
+    font-size: 0.95rem;
+    line-height: 1;
+    will-change: transform, opacity;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
+}
+
+nav,
+main,
+footer {
+    position: relative;
+    z-index: 1;
 }
 
 a {
@@ -95,37 +111,41 @@ a {
 /* NAVBAR */
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    position: relative;
     padding: 0 50px;
     height: 80px;
     align-items: center;
 }
-nav .left a {
-    color: var(--text-color);
-    font-size: 22px;
-    font-weight: 600px;
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
 }
-nav .right a {
-    color: var(--text-color);
-    margin: 0 10px;
+
+.nav-links a {
+    color: var(--gray-4);
+    text-transform: lowercase;
+    letter-spacing: 0.03em;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
-nav .right a:hover {
-	color: var(--gray-4)
-}
-nav .right label {
-    color: var(--text-color);
-    margin: 0 10px;
-}
-nav .fa-arrow-up-right-from-square {
-	margin: 0 5px;
-	font-size: 0.9rem;
-	
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+	color: #fff;
 }
 
 .labelThemeToggle {
-    position: relative;
+    position: absolute;
+    right: 50px;
     cursor: pointer;
 }
+
 .labelThemeToggle input {
     /* Hides the checkbox */
     display: none;
@@ -157,15 +177,6 @@ nav .fa-arrow-up-right-from-square {
 	to {
 		--angle: 360deg;
 	}
-}
-
-@keyframes scrollBackground {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 1024px 1024px; /* change these to control speed/direction */
-  }
 }
 
 @property --angle {
@@ -200,23 +211,25 @@ footer a:hover{
     nav {
         padding: 0 20px;
     }
-    nav .right a span {
-        display: none;
+
+    .nav-links {
+        gap: 16px;
+        padding-right: 36px;
     }
-    nav .right a {
-        font-size: 22px;
+
+    .labelThemeToggle {
+        right: 20px;
     }
 
 }
-
-
 
 html.fun-theme body {
    font-family: "Comic Relief", sans-serif;
-   background-image: url("/circles.png");
+    background: #000;
 }
 
-html.fun-theme nav .right a:hover {
+html.fun-theme .nav-links a:hover,
+html.fun-theme .nav-links a:focus-visible {
     color: var(--yellow)
 }
 

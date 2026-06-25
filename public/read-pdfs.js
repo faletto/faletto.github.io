@@ -10,23 +10,14 @@ fetch("/pdf_index.json").then(response => {
             const card = document.createElement("div");
             card.className = "pdf-card";
             card.innerHTML = `
-            <h2>${element.title}</h2>
-            <p><strong>Author:</strong> ${element.author}</p>`;
+            <div class="pdf-card-content">
+                <h2><a class="pdf-card-link" href="${element.file}" target="_blank" rel="noopener noreferrer">${element.title}</a></h2>
+                <p><strong>Author:</strong> ${element.author}</p>
+            </div>
+            <a class="pdf-card-link" href="${element.file}" target="_blank" rel="noopener noreferrer">
+                <img src="${element.thumb}" alt="Preview image" />
+            </a>`;
 
-            const link = document.createElement("a");
-            link.href = element.file;
-            link.target = "_blank";
-
-            const img = document.createElement("img");
-            img.src = element.thumb;
-            img.alt = "Preview image";
-            img.style.display = "block";
-            img.style.width = "100%";
-            img.style.maxWidth = "300px";
-            img.style.marginTop = "1rem";
-
-            link.appendChild(img);
-            card.appendChild(link);
             list.appendChild(card);
         });
     }

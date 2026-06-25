@@ -5,13 +5,12 @@ import "../styles/global.css";
 
 <section id="hero" class="hero">
     <div class="text">
-        <h2>Hi, I'm Colin.</h2>
+        <h2>Colin Faletto</h2>
         <p>
-            I'm a student at the University of Washington and
-            aspiring engineer with an interest in Electrical/Computer/Network
-            engineering.
+            - Studying <a target="_blank" rel="noopener noreferrer" href="https://ece.uw.edu">ECE</a> @ University of Washington<br>
+            - Interest in Computer, Network, and Software Engineering<br>
         </p>
-        <div class="fancy-button">
+        <!-- <div class="fancy-button">
             <a href="/labs">
                 <i class="fa-solid fa-list"></i>
                 <span>Cisco Labs</span>
@@ -26,7 +25,7 @@ import "../styles/global.css";
             <span>Repositories</span>
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
-    </div>
+    </div> -->
     </div>
     <div class="headshot fancy-border">
         <img src="/FALETTO-1009.jpg" alt="" />
@@ -34,27 +33,46 @@ import "../styles/global.css";
 </section>
 
 <style>
+
+    h2, p {
+        margin-top: 0;
+        font-family: 'Space Mono';
+    }
     p {
         margin-top: 0;
         font-size: 1.5rem;
+    }
+
+    a, a:visited {
+    color: white;
+    transition: color 0.2s ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+	    color: var(--gray-4);
     }
 
     /* Hero */
     .hero {
         display: flex;
         justify-content: space-between;
-        padding: 0 50px;
-        margin: 0px 0;
+        width: min(100%, 1040px);
+        margin: 0 auto 10px;
+        padding: 0 24px;
         align-items: center;
-        gap: 40px;
-        margin-bottom: 10px;
+        gap: 44px;
     }
 
     .hero .text {
-        flex: 5;
+        flex: 1 1 0;
+        max-width: 54ch;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     .hero .text h2 {
-        font-size: 85px;
+        font-size: 35px;
         background: var(--text-color);
         -webkit-background-clip: text;
         background-clip: text;
@@ -63,16 +81,19 @@ import "../styles/global.css";
     }
     
     .hero .headshot {
-        flex: 2;
+        flex: 0 0 auto;
         display: flex;
-        justify-content: right;
+        justify-content: center;
+        align-items: center;
+        min-width: 0;
     }
     .hero .headshot img {
-        --angle: 0deg;
-        width: 40vmin;
-        height: 40vmin;
+        width: auto;
+        height: var(--hero-text-height, auto);
+        object-fit: cover;
         border: 1vmin solid;
-        border-image: conic-gradient(
+        border-color: var(--gray-1);
+        /*border-image: conic-gradient(
                 from var(--angle),
                 var(--gray-1),
                 var(--gray-2),
@@ -83,7 +104,7 @@ import "../styles/global.css";
                 var(--gray-1)
             )
             1;
-        animation: 3s rotate linear infinite;
+        animation: 3s rotate linear infinite; */
     }
 
     .portfolio-link {
@@ -97,6 +118,7 @@ import "../styles/global.css";
     @media (max-width: 600px) {
         .hero {
             padding: 0 20px;
+            width: min(100%, 1040px);
         }
 
         .hero .text h2 {
@@ -104,18 +126,17 @@ import "../styles/global.css";
         }
     }
 
-    @media (max-width: 850px) {
-        .hero .text h2 {
-            font-size: 35px;
-        }
-    }
-
     @media (max-width: 740px) {
         .hero {
             flex-direction: column-reverse;
+            align-items: center;
+            width: min(100%, 720px);
         }
         .hero .headshot {
             justify-content: center;
+            align-items: center;
+            flex-basis: auto;
+            width: min(100%, 320px);
         }
         .hero .headshot img {
             width: 60%;
@@ -137,3 +158,22 @@ import "../styles/global.css";
     }
 
 </style>
+
+<!-- This is some overengineered BS but it works -->
+<!-- I hate frontend -->
+<script>
+    const hero = document.getElementById("hero");
+    const text = hero?.querySelector(".text");
+
+    if (hero && text) {
+        const syncHeroImageHeight = () => {
+            hero.style.setProperty("--hero-text-height", `${text.getBoundingClientRect().height}px`);
+        };
+
+        const observer = new ResizeObserver(syncHeroImageHeight);
+        observer.observe(text);
+        window.addEventListener("resize", syncHeroImageHeight, { passive: true });
+        window.addEventListener("load", syncHeroImageHeight, { once: true });
+        syncHeroImageHeight();
+    }
+</script>
